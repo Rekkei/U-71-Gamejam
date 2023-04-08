@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: "Assets/Scenes/giris ekran\u0131.unity"
+    guid: 283de99a0d0c7a149bb1a60326580ee5
+  - enabled: 1
+    path: Assets/Scenes/main.unity
+    guid: 205504809bdf3ad46a04c75097cac76e
+  - enabled: 1
+    path: Assets/Scenes/ayarlar.unity
+    guid: a11a6782c71b2174297a10f9af162237
   m_configObjects: {}
