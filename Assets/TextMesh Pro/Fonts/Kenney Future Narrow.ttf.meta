@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f076bc3d909ec8e478c62e861c8b41ae
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Kenney Future Narrow
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ab6a76f5f38e0334d80ed86258da79b2, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
