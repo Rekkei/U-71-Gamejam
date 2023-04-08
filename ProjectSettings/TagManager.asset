@@ -8,6 +8,8 @@ TagManager:
   - yatak
   - door
   - pc2
+  - UI-Front
+  - UI-Back
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - UI-Front
+  - UI-Back
   - 
   - 
   - 
@@ -44,4 +46,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI-Back
+    uniqueID: 3609224209
+    locked: 0
+  - name: UI-Front
+    uniqueID: 4187746285
     locked: 0

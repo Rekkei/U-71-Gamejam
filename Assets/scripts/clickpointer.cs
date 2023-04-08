@@ -39,8 +39,8 @@ public class clickpointer : MonoBehaviour
                         text2.SetActive(true);
                         TEXT3.text = "Bilgisayar";
                         
-                        TEXT1.text = "oyun ve uygulama akedemisine gir";
-                        TEXT2.text = "ders çalisiyorsun";
+                        TEXT1.text = "Oyun ve Uygulama Akedemisi egitimlerini izle";
+                        TEXT2.text = "Ders calis";
 
 
 
@@ -50,23 +50,23 @@ public class clickpointer : MonoBehaviour
                     {
                         Debug.Log("door");
                         durum = 2;
-                        TEXT3.text = "kapi";
+                        TEXT3.text = "Kapi";
                         text1.SetActive(true);
                         text2.SetActive(true);
                         
-                        TEXT1.text = "okula git";
-                        TEXT2.text = "arkadaslar ile disari cik";
+                        TEXT1.text = "Okula git";
+                        TEXT2.text = "Arkasalarinla disari cik";
                         popup.SetActive(true);
                     }
                     if (selectionrenderer.CompareTag("yatak"))
                     {
                         Debug.Log("yatak");
                         durum = 3;
-                        TEXT3.text = "yatak";
+                        TEXT3.text = "Yatak";
                         text1.SetActive(true);
                         text2.SetActive(false);
                         
-                        TEXT1.text = "uyu";
+                        TEXT1.text = "Uyu";
                         popup.SetActive(true);
                     }
 
