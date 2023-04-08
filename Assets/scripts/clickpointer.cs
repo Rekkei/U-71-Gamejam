@@ -55,7 +55,7 @@ public class clickpointer : MonoBehaviour
                         text2.SetActive(true);
                         
                         TEXT1.text = "Okula git";
-                        TEXT2.text = "Arkasalarinla disari cik";
+                        TEXT2.text = "Arkadaslarinla disari cik";
                         popup.SetActive(true);
                     }
                     if (selectionrenderer.CompareTag("yatak"))
