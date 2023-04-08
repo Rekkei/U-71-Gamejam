@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class main : MonoBehaviour
 {
-    public GameObject popup, popup2, popup3, popup4, popup5, popup6;
+    public GameObject popup, popup2, popup3, popup4, popup5, popup6,popup7, popup8, popup9, popup10, popup11, popup12, popup13, popup14, popup15, popup16, popup17, popup18, popup19, popup20, popup21;
     public TMP_Text TEXT1, TEXT2, TEXT3, TEXT4, TEXT5;
     public Sprite[] kalanzaman;
     public Image bar;
@@ -26,11 +26,14 @@ public class main : MonoBehaviour
     public static int sosyalstat = 0;
     public Sprite[] moonandsunsprite;
     public Image moonandsun123;
-    public bool mustsleep = false;
+    
     public TMP_Text countertxt1;
     public TMP_Text countertxt2;
     public int countDers;
     public int countAkademi;
+    public int popupbirthday;
+    public int daycounter;
+
 
 
 
@@ -39,9 +42,21 @@ public class main : MonoBehaviour
 
     private void Start()
     {
+        daycounter = 1;
         kalanzamanbar = 8;
         countertxt1.text = "Sýnava Kalan Süre:" + countDers.ToString() + "gün";
         countertxt2.text = "Akademi Sonuna Kalan Süre:" + countAkademi.ToString() + "gün";
+        if (kalanzamanbar < 5)
+        {
+            moonandsun123.sprite = moonandsunsprite[1];
+
+        }
+        else
+        {
+            moonandsun123.sprite = moonandsunsprite[0];
+        }
+        
+
     }
 
     public void button1durum()
@@ -84,9 +99,9 @@ public class main : MonoBehaviour
     {
         if (kalanzamanbar == 8)
         {
-            sosyalstat += 2;
+            sosyalstat += 1;
             kalanzamanbar -= 4;
-            dersstat += 2;
+            dersstat += 1;
             popup.SetActive(false);
             TEXT4.text = "okula gidiyorsun";
             TEXT3.text = "okula gidip akademik basarini arttirdin ve sosyallestin";
@@ -102,9 +117,9 @@ public class main : MonoBehaviour
 
             if (kalanzamanbar == 6)
             {
-                sosyalstat += 2;
+                sosyalstat += 1;
                 kalanzamanbar -= 4;
-                dersstat += 2;
+                dersstat += 1;
                 popup.SetActive(false);
                 TEXT4.text = "okula gidiyorsun";
                 TEXT3.text = "okula gidip akademik basarini arttirdin ve sosyallestin";
@@ -128,7 +143,7 @@ public class main : MonoBehaviour
         if (kalanzamanbar > 0)
         {
 
-            sosyalstat += 2;
+            sosyalstat += 1;
             kalanzamanbar -= 2;
             popup.SetActive(false);
             TEXT4.text = "disari cikiyorsun";
@@ -151,8 +166,100 @@ public class main : MonoBehaviour
         popup.SetActive(false);
         TEXT4.text = "yataga gittin";
         TEXT3.text = "guzel bir uyku cekip enerjini yeniledin";
+        StartCoroutine(daycounterf());
+
+        
         decCount();
         popup2.SetActive(true);
+        
+        
+    }
+    IEnumerator daycounterf()
+    {
+        yield return new WaitForSecondsRealtime(4f);
+        if (daycounter == 2)
+        {
+            popup6.SetActive(true);
+
+        }
+        if (daycounter == 7)
+        {
+            popup7.SetActive(true);
+
+        }
+        if (daycounter == 7)
+        {
+            popup7.SetActive(true);
+
+        }
+        if (daycounter == 9)
+        {
+            popup8.SetActive(true);
+        }
+        if (daycounter == 13)
+        {
+            popup9.SetActive(true);
+        }
+
+    }
+    public void dogumgunu1()
+    {
+        if (dersstat > 0)
+        {
+            dersstat -= 1;
+        }
+        sosyalstat += 1;
+        kalanzamanbar -= 4;
+        
+        TEXT3.text = "Arkadasinin dogum gununde iyi vakit gecirdin";
+        if (daycounter == 2)
+        {
+            popup6.SetActive(false);
+
+        }
+        if (daycounter == 7)
+        {
+            popup7.SetActive(false);
+        }
+        if (daycounter == 9)
+        {
+            popup8.SetActive(false);
+        }
+        if (daycounter == 13)
+        {
+            popup9.SetActive(false);
+        }
+        cikis2();
+    }
+    public void dogumgunu2()
+    {
+        if (sosyalstat > 0)
+        {
+            sosyalstat -= 1;
+        }
+
+        
+        kalanzamanbar -= 4;
+        dersstat += 1;
+        TEXT3.text = "Ders calisirken zor bir soruyu cozdun";
+        if (daycounter==2)
+        {
+            popup6.SetActive(false);
+        }
+        if (daycounter == 7)
+        {
+            popup7.SetActive(false);
+        }
+        if (daycounter == 9)
+        {
+            popup8.SetActive(false);
+        }
+        if (daycounter == 13)
+        {
+            popup9.SetActive(false);
+        }
+        cikis2();
+
         
     }
     public void akademi()
@@ -180,7 +287,7 @@ public class main : MonoBehaviour
         if (kalanzamanbar > 0)
         {
 
-            dersstat += 2;
+            dersstat += 1;
             kalanzamanbar -= 2;
             popup.SetActive(false);
             TEXT4.text = "ders calismaya basladin";
@@ -219,6 +326,8 @@ public class main : MonoBehaviour
         clickpointer.durum = 0;
         popup3.SetActive(true);
         StartCoroutine(blackscreen());
+    }
+
         IEnumerator blackscreen()
         {
 
@@ -236,15 +345,18 @@ public class main : MonoBehaviour
             {
                 moonandsun123.sprite = moonandsunsprite[0];
             }
+            
+
             popup3.SetActive(false);
 
 
 
         }
 
-    }
+    
     public void decCount()
     {
+        daycounter++;
         countDers--;
         countAkademi--;
         countertxt1.text = "Sýnava Kalan Süre:" + countDers.ToString() + "gün";
