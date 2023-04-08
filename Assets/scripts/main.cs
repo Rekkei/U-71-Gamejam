@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class main : MonoBehaviour
 {
-    public GameObject popup, popup2, popup3,popup4;
+    public GameObject popup, popup2, popup3, popup4, popup5, popup6;
     public TMP_Text TEXT1, TEXT2, TEXT3, TEXT4, TEXT5;
     public Sprite[] kalanzaman;
     public Image bar;
@@ -27,7 +27,11 @@ public class main : MonoBehaviour
     public Sprite[] moonandsunsprite;
     public Image moonandsun123;
     public bool mustsleep = false;
-    
+    public TMP_Text countertxt1;
+    public TMP_Text countertxt2;
+    public int countDers;
+    public int countAkademi;
+
 
 
 
@@ -36,6 +40,8 @@ public class main : MonoBehaviour
     private void Start()
     {
         kalanzamanbar = 8;
+        countertxt1.text = "Sýnava Kalan Süre:" + countDers.ToString() + "gün";
+        countertxt2.text = "Akademi Sonuna Kalan Süre:" + countAkademi.ToString() + "gün";
     }
 
     public void button1durum()
@@ -76,53 +82,133 @@ public class main : MonoBehaviour
 
     public void okul()
     {
+        if (kalanzamanbar == 8)
+        {
+            sosyalstat += 2;
+            kalanzamanbar -= 4;
+            dersstat += 2;
+            popup.SetActive(false);
+            TEXT4.text = "okula gidiyorsun";
+            TEXT3.text = "okula gidip akademik basarini arttirdin ve sosyallestin";
 
-        popup.SetActive(false);
-        TEXT4.text = "okula gidiyorsun";
-        TEXT3.text = "okula gidip akademik basarini arttirdin";
-        Debug.Log(dersstat);
-        popup2.SetActive(true);
+            popup2.SetActive(true);
+
+
+
+        }
+        else
+        
+        {
+
+            if (kalanzamanbar == 6)
+            {
+                sosyalstat += 2;
+                kalanzamanbar -= 4;
+                dersstat += 2;
+                popup.SetActive(false);
+                TEXT4.text = "okula gidiyorsun";
+                TEXT3.text = "okula gidip akademik basarini arttirdin ve sosyallestin";
+
+                popup2.SetActive(true);
+
+
+
+            }
+            else
+            {
+                popup5.SetActive(true);
+                popup.SetActive(false);
+            }
+
+        }
+
     }
     public void disari()
     {
-        sosyalstat += 2;
-        kalanzamanbar -= 2;
-        popup.SetActive(false);
-        TEXT4.text = "disari cikiyorsun";
-        TEXT3.text = "disari cikip arkadaslarin ile eglendin populerlik artti";
-        popup2.SetActive(true);
+        if (kalanzamanbar > 0)
+        {
+
+            sosyalstat += 2;
+            kalanzamanbar -= 2;
+            popup.SetActive(false);
+            TEXT4.text = "disari cikiyorsun";
+            TEXT3.text = "disari cikip arkadaslarin ile eglendin populerlik artti";
+            popup2.SetActive(true);
+
+        }
+        else
+        {
+            popup4.SetActive(true);
+            popup.SetActive(false);
+        }
+
     }
     public void uyu()
     {
         kalanzamanbar = 8;
+        popup4.SetActive(false);
+        popup5.SetActive(false);
         popup.SetActive(false);
         TEXT4.text = "yataga gittin";
         TEXT3.text = "guzel bir uyku cekip enerjini yeniledin";
+        decCount();
         popup2.SetActive(true);
+        
     }
     public void akademi()
     {
-        akademistat += 1;
-        kalanzamanbar -= 2;
-        popup.SetActive(false);
-        TEXT4.text = "oyun ve uygulama akademisi sitesine giris yaptin";
-        TEXT3.text = "oyun ve uygulama akademisinde ilerleme kaydettin";
-        popup2.SetActive(true);
+
+        if (kalanzamanbar > 0)
+        {
+            akademistat += 1;
+            kalanzamanbar -= 2;
+            popup.SetActive(false);
+            TEXT4.text = "oyun ve uygulama akademisi sitesine giris yaptin";
+            TEXT3.text = "oyun ve uygulama akademisinde ilerleme kaydettin";
+            popup2.SetActive(true);
+        }
+        else
+        {
+            popup4.SetActive(true);
+            popup.SetActive(false);
+        }
+
+
     }
     public void ders()
     {
-        dersstat += 2;
-        kalanzamanbar -= 2;
-        popup.SetActive(false);
-        TEXT4.text = "ders calismaya basladin";
-        TEXT3.text = "ders calisip akademik basarini arttirdin";
-        popup2.SetActive(true);
+        if (kalanzamanbar > 0)
+        {
+
+            dersstat += 2;
+            kalanzamanbar -= 2;
+            popup.SetActive(false);
+            TEXT4.text = "ders calismaya basladin";
+            TEXT3.text = "ders calisip akademik basarini arttirdin";
+            popup2.SetActive(true);
+        }
+        else
+        {
+            popup4.SetActive(true);
+            popup.SetActive(false);
+        }
+
     }
     public void cikis()
     {
         clickpointer.durum = 0;
         popup.SetActive(false);
         clickpointer.durum = 0;
+
+    }
+    public void cikis3()
+    {
+        popup4.SetActive(false);
+
+    }
+    public void cikis4()
+    {
+        popup5.SetActive(false);
 
     }
     public void cikis2()
@@ -157,17 +243,12 @@ public class main : MonoBehaviour
         }
 
     }
-    private void FixedUpdate()
+    public void decCount()
     {
-        if (kalanzamanbar <= 0)
-        {
-            mustsleep = true;
-        }
-        if(mustsleep)
-        {
-            popup4.SetActive(false);
-            TEXT5.text = "enerjin kalmadý uyumak zorundasýn";
-            popup4.SetActive(true);
-        }
+        countDers--;
+        countAkademi--;
+        countertxt1.text = "Sýnava Kalan Süre:" + countDers.ToString() + "gün";
+        countertxt2.text = "Akademi Sonuna Kalan Süre:" + countAkademi.ToString() + "gün";
     }
+
 }
