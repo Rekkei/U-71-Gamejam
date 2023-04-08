@@ -1,18 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 public class main : MonoBehaviour
 {
     public GameObject popup, popup2, popup3;
     public TMP_Text TEXT1, TEXT2, TEXT3, TEXT4;
+    public Sprite[] kalanzaman;
+    public  Image bar;
+    public static int kalanzamanbar = 0;
+    public Sprite[] moonandsunsprite;
+    public Image moonandsun123;
 
 
 
 
+
+    private void Start()
+    {
+        kalanzamanbar = 8;
+    }
 
     public void button1durum()
     {
+        
         if (clickpointer.durum == 1)
         {
             akademi();
@@ -55,30 +70,35 @@ public class main : MonoBehaviour
     {
         popup.SetActive(false);
         TEXT4.text = "okula gidiyorsun";
+        TEXT3.text = "okula gidip akademik basarini arttirdin";
         popup2.SetActive(true);
     }
     public void disari()
     {
         popup.SetActive(false);
         TEXT4.text = "disari cikiyorsun";
+        TEXT3.text = "disari cikip arkadaslarin ile eglendin populerlik artti";
         popup2.SetActive(true);
     }
     public void uyu()
     {
         popup.SetActive(false);
         TEXT4.text = "yataga gittin";
+        TEXT3.text = "guzel bir uyku cekip enerjini yeniledin";
         popup2.SetActive(true);
     }
     public void akademi()
     {
         popup.SetActive(false);
         TEXT4.text = "oyun ve uygulama akademisi sitesine giris yaptin";
+        TEXT3.text = "oyun ve uygulama akademisinde ilerleme kaydettin";
         popup2.SetActive(true);
     }
     public void ders()
     {
         popup.SetActive(false);
         TEXT4.text = "ders çalismaya basladin";
+        TEXT3.text = "ders calisip akademik basarini arttirdin";
         popup2.SetActive(true);
     }
     public void cikis()
@@ -98,6 +118,7 @@ public class main : MonoBehaviour
         StartCoroutine(blackscreen());
         IEnumerator blackscreen()
         {
+            
             yield return new WaitForSecondsRealtime(3f);
             popup3.SetActive(false);
 
@@ -105,5 +126,19 @@ public class main : MonoBehaviour
 
         }
 
+    }
+    private void FixedUpdate()
+    {
+
+        bar.sprite = kalanzaman[kalanzamanbar];
+        if (kalanzamanbar < 5)
+        {
+            moonandsun123.sprite = moonandsunsprite[1];
+
+        }
+        else
+        {
+            moonandsun123.sprite = moonandsunsprite[0];
+        }
     }
 }
