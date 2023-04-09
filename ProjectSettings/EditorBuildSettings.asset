@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/yapanlar.unity
     guid: 40cb70b9171a28049b0a1e56c9283668
+  - enabled: 1
+    path: Assets/Scenes/oyun bitti.unity
+    guid: c2833f6e6417c1945bef863106481f94
+  - enabled: 1
+    path: Assets/Scenes/kazandin.unity
+    guid: a0cfa95ddcdab1140b527d3a53c51772
   m_configObjects: {}

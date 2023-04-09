@@ -5,7 +5,7 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 
 public class main : MonoBehaviour
@@ -204,7 +204,6 @@ public class main : MonoBehaviour
     public void uyu()
     {
 
-        kalanzamanbar = 8;
         popup4.SetActive(false);
         popup5.SetActive(false);
         popup.SetActive(false);
@@ -219,7 +218,7 @@ public class main : MonoBehaviour
             {
                 if (dersstat == 0)
                 {
-                    Debug.Log("gameover");
+                    SceneManager.LoadScene(4);
                 }
                 else
                 {
@@ -235,7 +234,7 @@ public class main : MonoBehaviour
             {
                 if (sosyalstat == 0)
                 {
-                    Debug.Log("gameover");
+                    SceneManager.LoadScene(4);
                 }
                 else
                 {
@@ -253,9 +252,11 @@ public class main : MonoBehaviour
         
         decCount();
         popup2.SetActive(true);
-        
-        
+
+        kalanzamanbar = 8;
     }
+
+
     IEnumerator daycounterf()
     {
         yield return new WaitForSecondsRealtime(4f);
@@ -456,6 +457,7 @@ public class main : MonoBehaviour
         //bar.sprite = kalanzaman[kalanzamanbar];
 
         UpdateTimeline();
+        ZamanYenileme();
 
         if (kalanzamanbar < 5)
             {
@@ -469,10 +471,8 @@ public class main : MonoBehaviour
             
 
             popup3.SetActive(false);
-
-
-
         }
+
 
     public void UpdateTimeline()
     {
@@ -492,6 +492,16 @@ public class main : MonoBehaviour
         }
     }
 
+    public void ZamanYenileme()
+    {
+        for (int i = 0; i < kalanzamanbar; i++)
+        {
+            if (timeIntervals[i].gameObject.activeSelf == false)
+            {
+                timeIntervals[i].gameObject.SetActive(true);
+            }
+        }
+    }
 
 
     public void decCount()
