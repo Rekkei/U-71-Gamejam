@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GirisEkrani : MonoBehaviour
 {
+    public GameObject ayarlarPanel;
+    public GameObject ekipPanel;
+
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
@@ -12,17 +15,24 @@ public class GirisEkrani : MonoBehaviour
 
     public void Ayarlar()
     {
-        SceneManager.LoadScene(2);
+        ayarlarPanel.SetActive(true);
     }
 
     public void EkipUyeleri()
     {
-        SceneManager.LoadScene(3);
+        ekipPanel.SetActive(true);
     }
+
 
     public void GirisEkraninaDon()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void GirisEkraninaDon2()
+    {
+        ayarlarPanel.SetActive(false);
+        ekipPanel.SetActive(false);
     }
 
 

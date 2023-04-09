@@ -285,6 +285,18 @@ public class main : MonoBehaviour
             popup9.SetActive(true);
         }
 
+        if (daycounter == 15)
+        {
+            if (akademistat == 8)
+            {
+                SceneManager.LoadScene(5); //WIN
+            }
+            else
+            {
+                SceneManager.LoadScene(4); //LOSE
+            }
+        }
+
     }
     public void dogumgunu1()
     {
