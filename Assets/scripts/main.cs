@@ -39,10 +39,14 @@ public class main : MonoBehaviour
     public int studycounter=2;
     public int twodaycounter;
     public bool twodaysedu, twodayssocial;
+    public bool uyudumu;
 
 
     private void Start()
     {
+        daycounter = 1;
+        dersstat = 1;
+        sosyalstat = 1;
         akademimage.sprite = akademibar[akademistat];
         dersimage.sprite = dersbar[dersstat];
         sosyalimage.sprite = sosyalbar[sosyalstat];
@@ -64,7 +68,21 @@ public class main : MonoBehaviour
         //}
 
     }
-    
+    private void FixedUpdate()
+    {
+        if(sosyalstat==0)
+        {
+            SceneManager.LoadScene(4);
+            PlayerPrefs.SetInt("reason", 1);
+        }
+        if (dersstat == 0)
+        {
+            SceneManager.LoadScene(4);
+            PlayerPrefs.SetInt("reason", 2);
+        }
+
+    }
+
 
     public void button1durum()
     {
@@ -184,7 +202,7 @@ public class main : MonoBehaviour
             }
             else
             {
-                sosyalstat += 1;
+                
                 sosyalstat += 1;
             }
             kalanzamanbar -= 2;
@@ -219,6 +237,7 @@ public class main : MonoBehaviour
                 if (dersstat == 0)
                 {
                     SceneManager.LoadScene(4);
+                    PlayerPrefs.SetInt("reason", 2);
                 }
                 else
                 {
@@ -235,6 +254,7 @@ public class main : MonoBehaviour
                 if (sosyalstat == 0)
                 {
                     SceneManager.LoadScene(4);
+                    PlayerPrefs.SetInt("reason", 1);
                 }
                 else
                 {
@@ -247,29 +267,34 @@ public class main : MonoBehaviour
             twodayssocial = false;
             twodaysedu = false;
         }
-        StartCoroutine(daycounterf());
+        
 
         
         decCount();
         popup2.SetActive(true);
 
         kalanzamanbar = 8;
+        uyudumu = true;
     }
 
 
     IEnumerator daycounterf()
     {
-        yield return new WaitForSecondsRealtime(4f);
+        yield return new WaitForSecondsRealtime(3f);
         if (daycounter == 2)
         {
             popup6.SetActive(true);
 
         }
-        if (daycounter == 7)
-        {
-            popup7.SetActive(true);
+        
+        
+            if (daycounter == 7)
+            {
+                popup7.SetActive(true);
 
-        }
+            }
+        
+        
         if (daycounter == 8)
         {
             popupexam.SetActive(true);
@@ -285,15 +310,16 @@ public class main : MonoBehaviour
             popup9.SetActive(true);
         }
 
-        if (daycounter == 15)
+        if (daycounter == 11)
         {
-            if (akademistat == 8)
+            if (akademistat == 7)
             {
                 SceneManager.LoadScene(5); //WIN
             }
             else
             {
                 SceneManager.LoadScene(4); //LOSE
+                PlayerPrefs.SetInt("reason", 3);
             }
         }
 
@@ -451,6 +477,19 @@ public class main : MonoBehaviour
     }
     public void cikis2()
     {
+        if (uyudumu)
+        {
+
+            uyudumu= false;
+            StartCoroutine(daycounterf());
+        }
+
+
+
+
+
+
+
         clickpointer.durum = 0;
         popup.SetActive(false);
         popup2.SetActive(false);
@@ -521,8 +560,27 @@ public class main : MonoBehaviour
         daycounter++;
         countDers--;
         countAkademi--;
-        countertxt1.text = "Sinava kalan sure: " + countDers.ToString() + " gun";
-        countertxt2.text = "Akademi sonuna kalan sure: " + countAkademi.ToString() + " gun";
+        if(daycounter>=9) {
+
+            countertxt1.text = "Sinavi gectin ";
+
+        }
+        else
+        {
+            countertxt1.text = "Sinava kalan sure: " + countDers.ToString() + " gun";
+        }
+       
+        
+            countertxt2.text = "Akademi sonuna kalan sure: " + countAkademi.ToString() + " gun";
+
+
+
+
+
+
+
+
+        countertxt2.text = "Akademi sonuna kalan sure: " + countAkademi.ToString() + " gun" ;
     }
 
     public void sinav()
@@ -537,7 +595,8 @@ public class main : MonoBehaviour
         }
         else
         {
-            Debug.Log("Game Over");
+            SceneManager.LoadScene(4);
+            PlayerPrefs.SetInt("reason", 4);
         }
     }
 }
